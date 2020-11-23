@@ -1,0 +1,66 @@
+
+<!DocType html>
+<html>
+<head>
+<title>
+Hang Man 0.1
+</title>
+</head>
+<body>
+
+<script>
+// take array with some words
+//choose randomly
+//answer array
+//show progress of game to user
+
+//ask for guess
+//validate if correct add it in the answer array.
+
+
+var words=["mohan","amazon","cat","cow","burger","helicopter","titanic","fox","anji"];
+//random word is selected from array
+var word=words[Math.floor(Math.random()*words.length)];
+var answerArray=[];
+for(var i=0;i<word.length;i++){
+answerArray[i]="_";
+}
+var remainingLetters=word.length;
+alert(answerArray.join(" "));
+while (remainingLetters > 0) //Start
+{
+    var guess=prompt("Guess a letter,Or if you want to stop playing click 'cancel' ");
+    
+    if(guess.toLowerCase() == 'cancel') break;
+    
+    if(guess===null) continue;
+    else if(guess.length !== 1)
+    {
+        alert("enter single character only"); 
+        continue;
+    }
+    else{
+        var correct_guess=false;
+        for(var j=0;j<word.length;j++)
+        {
+            if(word[j]==guess.toLowerCase() )
+            {//    
+                alert("You guessed Correctly");
+                answerArray[j]=guess.toLowerCase();
+                remainingLetters--;  
+                alert(answerArray.join(" "));
+                correct_guess=true;
+            }
+      //if the value of correct_guess changed with in the block the value changed persisits outside the block as we   
+        }
+        //alert(correct_guess);
+        if(!correct_guess)
+        alert("try to guess correctly!!");
+    }//end of else
+}//end of game loop
+if(guess!='cancel')
+alert("Good Job!,the word was "+word);
+
+</script>
+</body>
+</html>
